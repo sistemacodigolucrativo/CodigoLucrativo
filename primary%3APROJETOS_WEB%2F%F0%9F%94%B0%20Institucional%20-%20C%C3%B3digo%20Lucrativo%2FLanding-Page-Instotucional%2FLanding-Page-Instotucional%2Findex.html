@@ -1,0 +1,1156 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#101418" />
+    <title>Código Lucrativo | Desenvolvimento Web para Pequenas Empresas</title>
+    <meta
+      name="description"
+      content="Sites, landing pages, sistemas web, integrações e otimizações para pequenas empresas venderem melhor, atenderem melhor e crescerem online."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Código Lucrativo | Seu site pronto para vender mais" />
+    <meta
+      property="og:description"
+      content="Desenvolvimento web com foco comercial para pequenas empresas: sites, landing pages, sistemas, e-commerce, automações e integrações."
+    />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80" />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #101418;
+        --panel: #171d22;
+        --panel-strong: #20282f;
+        --text: #f7f3ea;
+        --muted: #c7c0b2;
+        --line: rgba(255, 255, 255, 0.13);
+        --gold: #e4b04a;
+        --green: #37c98b;
+        --blue: #7cb7ff;
+        --danger: #ff7468;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        letter-spacing: 0;
+      }
+
+      .topbar {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 20;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+        background: rgba(16, 20, 24, 0.84);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1160px, calc(100% - 36px));
+        min-height: 72px;
+        margin: 0 auto;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+      }
+
+      .brand-logo {
+        display: block;
+        width: min(230px, 46vw);
+        height: auto;
+        max-height: 52px;
+        object-fit: contain;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid rgba(228, 176, 74, 0.42);
+        border-radius: 8px;
+        background: rgba(228, 176, 74, 0.12);
+        color: var(--gold);
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: rgba(247, 243, 234, 0.74);
+        font-size: 0.92rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .button,
+      .nav-cta {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        padding: 0 18px;
+        font-weight: 900;
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background 180ms ease;
+      }
+
+      .button:hover,
+      .nav-cta:hover {
+        transform: translateY(-1px);
+      }
+
+      .button.primary,
+      .nav-cta {
+        background: var(--gold);
+        color: #15110a;
+      }
+
+      .button.secondary {
+        border-color: rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text);
+      }
+
+      .hero {
+        position: relative;
+        min-height: 92vh;
+        display: flex;
+        align-items: end;
+        overflow: hidden;
+        background-image: url("./assets/codigo-lucrativo-hero-bg.png");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(7, 10, 13, 0.9), rgba(7, 10, 13, 0.64)),
+          rgba(7, 10, 13, 0.58);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 34%;
+        background: linear-gradient(180deg, rgba(16, 20, 24, 0), var(--bg));
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        width: min(1160px, calc(100% - 36px));
+        margin: 0 auto;
+        padding: 138px 0 72px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: currentColor;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin-top: 18px;
+        font-size: clamp(3rem, 7vw, 6.7rem);
+        line-height: 0.94;
+      }
+
+      .hero-copy {
+        max-width: 720px;
+        margin-top: 24px;
+        color: rgba(247, 243, 234, 0.84);
+        font-size: clamp(1.05rem, 2vw, 1.32rem);
+      }
+
+      .hero-logo {
+        display: block;
+        width: min(560px, 90vw);
+        height: auto;
+        margin-bottom: 28px;
+        filter: drop-shadow(0 18px 42px rgba(0, 0, 0, 0.55));
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 34px;
+      }
+
+      .proof-note {
+        margin-top: 16px;
+        color: rgba(247, 243, 234, 0.75);
+        font-size: 0.96rem;
+      }
+
+      .credibility {
+        position: relative;
+        z-index: 2;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .credibility-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 1px;
+        width: min(1160px, calc(100% - 36px));
+        margin: 0 auto;
+      }
+
+      .fact {
+        min-height: 124px;
+        padding: 24px 18px;
+        background: rgba(16, 20, 24, 0.72);
+      }
+
+      .fact strong {
+        display: block;
+        color: var(--gold);
+        font-size: 1.7rem;
+        line-height: 1;
+      }
+
+      .fact span {
+        display: block;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      section {
+        padding: 88px 0;
+      }
+
+      .wrap {
+        width: min(1160px, calc(100% - 36px));
+        margin: 0 auto;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.68fr);
+        gap: 34px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      .section-head h2,
+      .wide-head h2 {
+        margin-top: 12px;
+        font-size: clamp(2rem, 4vw, 3.55rem);
+        line-height: 1.03;
+      }
+
+      .section-head p,
+      .wide-head p {
+        color: var(--muted);
+      }
+
+      .wide-head {
+        max-width: 850px;
+        margin-bottom: 34px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid.four {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .card,
+      .panel,
+      .faq details,
+      .testimonial,
+      .case-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+      }
+
+      .card {
+        min-height: 214px;
+        padding: 24px;
+      }
+
+      .card h3,
+      .case-card h3,
+      .testimonial h3 {
+        margin-top: 16px;
+        font-size: 1.18rem;
+      }
+
+      .card p,
+      .case-card p,
+      .testimonial p {
+        margin-top: 10px;
+        color: var(--muted);
+      }
+
+      .icon {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border-radius: 8px;
+        background: rgba(55, 201, 139, 0.11);
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .pain-list,
+      .check-list,
+      .profile-list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .pain-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pain-list li,
+      .check-list li,
+      .profile-list li {
+        display: flex;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.035);
+        color: var(--muted);
+      }
+
+      .pain-list li::before {
+        content: "!";
+        display: grid;
+        flex: 0 0 24px;
+        width: 24px;
+        height: 24px;
+        place-items: center;
+        border-radius: 999px;
+        background: rgba(255, 116, 104, 0.13);
+        color: var(--danger);
+        font-weight: 900;
+      }
+
+      .check-list li::before,
+      .profile-list li::before {
+        content: "✓";
+        flex: 0 0 auto;
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .solution-intro {
+        margin-bottom: 24px;
+        border: 1px solid rgba(228, 176, 74, 0.28);
+        border-radius: 8px;
+        padding: 26px;
+        background:
+          linear-gradient(135deg, rgba(228, 176, 74, 0.11), rgba(55, 201, 139, 0.07)),
+          var(--panel-strong);
+      }
+
+      .solution-intro p {
+        max-width: 900px;
+        color: rgba(247, 243, 234, 0.84);
+        font-size: 1.05rem;
+      }
+
+      .process {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .step {
+        border-top: 2px solid var(--gold);
+        padding-top: 18px;
+      }
+
+      .step strong {
+        display: block;
+        color: var(--gold);
+        font-size: 0.88rem;
+      }
+
+      .step h3 {
+        margin-top: 8px;
+        font-size: 1.08rem;
+      }
+
+      .step p {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .case-card,
+      .testimonial {
+        padding: 24px;
+      }
+
+      .case-label {
+        color: var(--green);
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .case-card b {
+        color: var(--text);
+      }
+
+      .rating {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .rating span {
+        border: 1px solid rgba(228, 176, 74, 0.28);
+        border-radius: 999px;
+        padding: 8px 12px;
+        background: rgba(228, 176, 74, 0.08);
+        color: rgba(247, 243, 234, 0.82);
+        font-size: 0.9rem;
+      }
+
+      .faq {
+        display: grid;
+        gap: 12px;
+      }
+
+      .faq details {
+        padding: 18px 20px;
+      }
+
+      .faq summary {
+        cursor: pointer;
+        color: var(--text);
+        font-weight: 900;
+      }
+
+      .faq details p {
+        margin-top: 12px;
+        color: var(--muted);
+      }
+
+      .cta {
+        padding: 76px 0 96px;
+      }
+
+      .cta-box {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: center;
+        border: 1px solid rgba(228, 176, 74, 0.34);
+        border-radius: 8px;
+        padding: 34px;
+        background:
+          linear-gradient(135deg, rgba(228, 176, 74, 0.12), rgba(55, 201, 139, 0.08)),
+          var(--panel-strong);
+      }
+
+      .cta-box h2 {
+        font-size: clamp(1.85rem, 3.4vw, 3.25rem);
+        line-height: 1.03;
+      }
+
+      .cta-box p {
+        max-width: 720px;
+        margin-top: 12px;
+        color: var(--muted);
+      }
+
+      .safe-note {
+        margin-top: 12px;
+        color: rgba(247, 243, 234, 0.72);
+        font-size: 0.92rem;
+      }
+
+      .collapse-list [data-collapsible-item][hidden] {
+        display: none;
+      }
+
+      .collapse-control {
+        display: flex;
+        justify-content: center;
+        margin-top: 18px;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 30px 0;
+        color: rgba(247, 243, 234, 0.62);
+      }
+
+      .footer-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        width: min(1160px, calc(100% - 36px));
+        margin: 0 auto;
+        font-size: 0.92rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        justify-content: end;
+      }
+
+      .footer-logo {
+        display: block;
+        width: min(260px, 72vw);
+        height: auto;
+        margin-bottom: 14px;
+      }
+
+      @media (max-width: 980px) {
+        .credibility-grid,
+        .grid,
+        .grid.two,
+        .grid.four,
+        .pain-list,
+        .process,
+        .section-head,
+        .cta-box,
+        .footer-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .nav {
+          min-height: 66px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          min-height: 94vh;
+          background-position: 64% center;
+        }
+
+        .hero-inner {
+          padding: 118px 0 48px;
+        }
+
+        .brand-logo {
+          width: min(172px, 43vw);
+          max-height: 48px;
+        }
+
+        .hero-logo {
+          width: min(330px, 90vw);
+          margin-bottom: 22px;
+        }
+
+        section {
+          padding: 64px 0;
+        }
+
+        .card,
+        .case-card,
+        .testimonial,
+        .solution-intro,
+        .cta-box {
+          padding: 20px;
+        }
+
+        .footer-links {
+          justify-content: start;
+        }
+      }
+
+      .nav {
+        width: min(720px, calc(100% - 36px));
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .brand-logo {
+        width: min(172px, 43vw);
+        max-height: 48px;
+      }
+
+      .hero {
+        min-height: 94vh;
+        align-items: end;
+        background-position: 64% center;
+      }
+
+      .hero-inner,
+      .wrap,
+      .credibility-grid,
+      .footer-inner {
+        width: min(720px, calc(100% - 36px));
+      }
+
+      .hero-inner {
+        padding: 118px 0 48px;
+        text-align: center;
+      }
+
+      .hero-logo {
+        width: min(330px, 90vw);
+        margin: 0 auto 22px;
+      }
+
+      .eyebrow,
+      .hero-actions,
+      .rating {
+        justify-content: center;
+      }
+
+      h1,
+      .hero-copy,
+      .proof-note,
+      .wide-head,
+      .solution-intro p,
+      .cta-box p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .section-head,
+      .credibility-grid,
+      .grid,
+      .grid.two,
+      .grid.four,
+      .pain-list,
+      .process,
+      .cta-box,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head,
+      .wide-head,
+      .solution-intro,
+      .card,
+      .case-card,
+      .testimonial,
+      .cta-box,
+      footer {
+        text-align: center;
+      }
+
+      .section-head {
+        gap: 16px;
+        align-items: center;
+      }
+
+      .icon {
+        margin: 0 auto;
+      }
+
+      .pain-list li,
+      .check-list li,
+      .profile-list li,
+      .faq details {
+        text-align: left;
+      }
+
+      .process {
+        gap: 24px;
+      }
+
+      .step {
+        max-width: 520px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+
+      .footer-logo {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="brand" href="#inicio" aria-label="Código Lucrativo">
+          <img class="brand-logo" src="./assets/codigo-lucrativo-logo.png" alt="Código Lucrativo" />
+        </a>
+        <div class="nav-links" aria-label="Seções">
+          <a href="#servicos">Serviços</a>
+          <a href="#modelos">Modelos</a>
+          <a href="#processo">Processo</a>
+          <a href="#portfolio">Portfólio</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <a class="nav-cta" href="https://wa.me/5599984843091">Solicitar orçamento</a>
+      </nav>
+    </header>
+
+    <section id="inicio" class="hero" aria-label="Código Lucrativo">
+      <div class="hero-inner">
+        <img class="hero-logo" src="./assets/codigo-lucrativo-logo.png" alt="Código Lucrativo" />
+        <span class="eyebrow">Desenvolvimento web com foco comercial</span>
+        <h1>Seu site pronto para vender mais</h1>
+        <p class="hero-copy">
+          Criamos sites, landing pages e sistemas web para pequenas empresas que precisam atrair clientes, passar confiança e transformar presença digital em resultado real.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://wa.me/5599984843091">Solicitar orçamento pelo WhatsApp</a>
+          <a class="button secondary" href="#servicos">Ver o que podemos criar</a>
+        </div>
+        <p class="proof-note">21 projetos entregues para negócios que precisavam sair do improviso e vender melhor online.</p>
+      </div>
+    </section>
+
+    <aside class="credibility" aria-label="Credibilidade">
+      <div class="credibility-grid">
+        <div class="fact"><strong>21</strong><span>projetos entregues em diferentes tipos de negócio</span></div>
+        <div class="fact"><strong>3 frentes</strong><span>sites, landing pages e sistemas com foco comercial</span></div>
+        <div class="fact"><strong>PMEs</strong><span>projetos pensados para pequenas empresas</span></div>
+        <div class="fact"><strong>Online</strong><span>do planejamento à publicação, sem confusão</span></div>
+        <div class="fact"><strong>Venda</strong><span>estrutura para captar, atender e converter melhor</span></div>
+      </div>
+    </aside>
+
+    <main>
+      <section id="problema">
+        <div class="wrap">
+          <div class="wide-head">
+            <span class="eyebrow">Você reconhece alguma dessas situações?</span>
+            <h2>Seu negócio pode estar perdendo vendas antes da conversa começar</h2>
+            <p>
+              O problema não é só não ter site. O problema é ter uma estrutura digital que não ajuda o cliente a confiar, entender e comprar.
+            </p>
+          </div>
+          <ul class="pain-list collapse-list" data-collapse-list data-collapsed-count="4">
+            <li data-collapsible-item>Sua empresa ainda depende só do Instagram ou WhatsApp para parecer profissional.</li>
+            <li data-collapsible-item>Seu site atual é antigo, lento, confuso ou não transmite confiança.</li>
+            <li data-collapsible-item>Você investe em anúncio, mas manda o cliente para uma página que não convence.</li>
+            <li data-collapsible-item>As pessoas perguntam sempre as mesmas informações porque não encontram nada organizado.</li>
+            <li data-collapsible-item>Seu negócio precisa de cardápio, pedidos, painel, área de membros ou automação, mas tudo ainda é manual.</li>
+            <li data-collapsible-item>Você perde tempo com planilhas, mensagens soltas e processos repetitivos.</li>
+            <li data-collapsible-item>Seu concorrente parece maior só porque tem uma presença digital melhor.</li>
+            <li data-collapsible-item>Você precisa de alguém que entenda venda, não apenas de uma tela bonita.</li>
+          </ul>
+          <div class="collapse-control">
+            <button class="button secondary" type="button" data-collapse-button data-expanded-label="Ver menos situações">Ver mais situações</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="servicos">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">A solução central</span>
+              <h2>A Código Lucrativo transforma ideias em páginas, sistemas e vendas</h2>
+            </div>
+            <p>
+              Não existe projeto pequeno demais nem complexo demais: se o seu negócio precisa de uma página, sistema, integração ou melhoria digital, nós estruturamos o caminho e colocamos no ar.
+            </p>
+          </div>
+
+          <div class="solution-intro">
+            <p>
+              Criamos soluções web para pequenas empresas que querem vender melhor, atender com mais profissionalismo e organizar sua operação online.
+            </p>
+          </div>
+
+          <div class="grid collapse-list" data-collapse-list data-collapsed-count="3">
+            <article class="card" data-collapsible-item><div class="icon">01</div><h3>Sites institucionais</h3><p>Apresente sua empresa com clareza, confiança e uma estrutura profissional para Google, Instagram e indicações.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">02</div><h3>Landing pages</h3><p>Páginas focadas em conversão para anúncios, lançamentos, captação de leads, WhatsApp, checkout e campanhas.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">03</div><h3>E-commerce e lojas virtuais</h3><p>Estruturas para vender produtos online com vitrine organizada, navegação clara e caminho de compra mais simples.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">04</div><h3>Sistemas web</h3><p>Cardápios digitais, pedidos online, painéis administrativos, dashboards, áreas de membros, permissões e múltiplos usuários.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">05</div><h3>Manutenção e melhoria</h3><p>Corrigimos erros, modernizamos páginas antigas e melhoramos texto, velocidade, responsividade e experiência do usuário.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">06</div><h3>Performance e SEO técnico</h3><p>Otimizamos estrutura, carregamento, organização e indexação para seu site funcionar melhor e ser encontrado.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">07</div><h3>Integrações</h3><p>Conectamos seu site com WhatsApp, pagamentos, CRMs, APIs, formulários e automações que fazem parte da operação.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">08</div><h3>Projetos sob demanda</h3><p>Quando sua necessidade não cabe em uma categoria pronta, avaliamos o objetivo e desenvolvemos a solução certa.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">09</div><h3>Operação digital</h3><p>Transformamos processos manuais em fluxos online mais claros para equipe, cliente e gestão.</p></article>
+          </div>
+          <div class="collapse-control">
+            <button class="button secondary" type="button" data-collapse-button data-expanded-label="Ver menos serviços">Ver todos os serviços</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="modelos">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Ver modelos de Landing Page e Website</span>
+              <h2>Escolha uma base visual antes de começar do zero</h2>
+            </div>
+            <p>
+              Landing pages são páginas mais diretas, monolíticas e focadas em uma oferta. Websites Premium são estruturas completas, com mais seções, autoridade e profundidade comercial.
+            </p>
+          </div>
+
+          <div class="grid collapse-list" data-collapse-list data-collapsed-count="2">
+            <article class="card" data-collapsible-item>
+              <div class="icon">LP</div>
+              <h3>Landing Page Produto Digital</h3>
+              <p>Modelo monolítico para venda, captura, diagnóstico, promessa forte e CTA direto para campanha.</p>
+              <p class="safe-note"><a href="/codigo-lucrativo/modelos/landing-dieta-milenar/">Abrir modelo</a></p>
+            </article>
+            <article class="card" data-collapsible-item>
+              <div class="icon">LP</div>
+              <h3>Landing Page WhatsApp Local</h3>
+              <p>Modelo enxuto para pequenos negócios que querem transformar visitas em conversas no WhatsApp.</p>
+              <p class="safe-note"><a href="/codigo-lucrativo/modelos/landing-whatsapp-local/">Abrir modelo</a></p>
+            </article>
+            <article class="card" data-collapsible-item>
+              <div class="icon">WP</div>
+              <h3>Website Premium Institucional</h3>
+              <p>Modelo completo para empresas que precisam de presença forte, serviços, prova, FAQ e fechamento.</p>
+              <p class="safe-note"><a href="/codigo-lucrativo/modelos/website-desenvolvimento-premium/">Abrir modelo</a></p>
+            </article>
+            <article class="card" data-collapsible-item>
+              <div class="icon">WP</div>
+              <h3>Website Premium Cardápio/Sistema</h3>
+              <p>Modelo completo para operação digital, pedidos, cardápio, painel, recursos e implantação.</p>
+              <p class="safe-note"><a href="/codigo-lucrativo/modelos/website-cardapio-premium/">Abrir modelo</a></p>
+            </article>
+            <article class="card" data-collapsible-item>
+              <div class="icon">+</div>
+              <h3>Modelo sob demanda</h3>
+              <p>Se nenhum modelo encaixar, usamos a referência mais próxima e criamos a estrutura certa para o seu nicho.</p>
+              <p class="safe-note"><a href="https://wa.me/5599984843091">Pedir um modelo específico</a></p>
+            </article>
+            <article class="card" data-collapsible-item>
+              <div class="icon">CL</div>
+              <h3>Catálogo em expansão</h3>
+              <p>Novos modelos podem ser adicionados como páginas HTML estáticas, sem depender de React ou Vite.</p>
+              <p class="safe-note">Landing pages e websites prontos para adaptação.</p>
+            </article>
+          </div>
+          <div class="collapse-control">
+            <button class="button secondary" type="button" data-collapse-button data-expanded-label="Ver menos modelos">Ver todos os modelos</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="metodo">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Por que a Código Lucrativo</span>
+              <h2>Aqui o projeto nasce com objetivo, não só com layout</h2>
+            </div>
+            <p>
+              A entrega combina estratégia comercial, clareza de mensagem, desenvolvimento organizado e publicação funcional.
+            </p>
+          </div>
+
+          <div class="grid two collapse-list" data-collapse-list data-collapsed-count="3">
+            <article class="card" data-collapsible-item><div class="icon">✓</div><h3>Estratégia antes do código</h3><p>Entendemos o que você vende, para quem vende e qual ação o visitante precisa tomar.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">✓</div><h3>Copy, estrutura e conversão</h3><p>Organizamos a mensagem para o cliente entender rápido e avançar para contato, orçamento ou compra.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">✓</div><h3>Base preparada para crescer</h3><p>Criamos páginas e sistemas com organização técnica para futuras melhorias, integrações e novas etapas.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">✓</div><h3>Comunicação simples</h3><p>Você entende o que está sendo feito, em que etapa o projeto está e o que falta para publicar.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">✓</div><h3>Foco em pequenas empresas</h3><p>A solução faz sentido para quem precisa vender melhor sem transformar o projeto em burocracia.</p></article>
+            <article class="card" data-collapsible-item><div class="icon">✓</div><h3>Entrega publicada e funcional</h3><p>O objetivo não é aprovar uma tela. O objetivo é colocar o projeto no ar, pronto para divulgação.</p></article>
+          </div>
+          <div class="collapse-control">
+            <button class="button secondary" type="button" data-collapse-button data-expanded-label="Ver menos diferenciais">Ver mais diferenciais</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="processo">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Como funciona</span>
+              <h2>Do primeiro contato ao link publicado, sem confusão</h2>
+            </div>
+            <p>
+              O processo é objetivo para tirar a ideia do papel e colocar uma página ou sistema útil no ar com velocidade e controle.
+            </p>
+          </div>
+
+          <div class="process">
+            <article class="step"><strong>01</strong><h3>Diagnóstico</h3><p>Entendemos seu negócio, objetivo, público e tipo de solução ideal.</p></article>
+            <article class="step"><strong>02</strong><h3>Estrutura</h3><p>Definimos páginas, funcionalidades, textos, chamadas e fluxo do usuário.</p></article>
+            <article class="step"><strong>03</strong><h3>Desenvolvimento</h3><p>Criamos o site, landing page ou sistema com foco em performance e clareza.</p></article>
+            <article class="step"><strong>04</strong><h3>Revisão</h3><p>Você valida o projeto, solicita ajustes e alinhamos os detalhes finais.</p></article>
+            <article class="step"><strong>05</strong><h3>Publicação</h3><p>Colocamos tudo online e entregamos o link pronto para divulgação.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Prova de resultado</span>
+              <h2>Projetos diferentes, o mesmo objetivo: gerar resultado</h2>
+            </div>
+            <p>
+              Cada projeto começa com uma pergunta simples: o que essa página ou sistema precisa resolver?
+            </p>
+          </div>
+
+          <div class="grid">
+            <article class="case-card">
+              <span class="case-label">Restaurante / Delivery</span>
+              <h3>Pedidos mais organizados pelo WhatsApp</h3>
+              <p><b>Problema:</b> pedidos chegavam desorganizados e o cardápio era enviado manualmente.</p>
+              <p><b>Entrega:</b> cardápio digital com pedido direcionado para o WhatsApp.</p>
+              <p><b>Resultado:</b> atendimento mais rápido, menos perguntas repetidas e experiência mais profissional.</p>
+            </article>
+            <article class="case-card">
+              <span class="case-label">Prestador de serviço local</span>
+              <h3>Mais confiança antes do orçamento</h3>
+              <p><b>Problema:</b> dependia apenas de indicação e redes sociais para parecer confiável.</p>
+              <p><b>Entrega:</b> site institucional com serviços, autoridade e CTA para orçamento.</p>
+              <p><b>Resultado:</b> presença digital mais profissional para anúncios, bio e conversas comerciais.</p>
+            </article>
+            <article class="case-card">
+              <span class="case-label">Infoprodutor / Serviço digital</span>
+              <h3>Campanha com página de conversão</h3>
+              <p><b>Problema:</b> precisava de uma página específica para campanha, sem estrutura clara.</p>
+              <p><b>Entrega:</b> landing page com promessa, benefícios, prova social, FAQ e CTA.</p>
+              <p><b>Resultado:</b> destino mais profissional e mensagem mais direta para captação de leads.</p>
+            </article>
+          </div>
+          <p class="safe-note">O portfólio completo pode ser solicitado pelo WhatsApp.</p>
+        </div>
+      </section>
+
+      <section id="depoimentos">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Prova social</span>
+              <h2>Quem precisava de presença digital encontrou uma solução prática</h2>
+            </div>
+            <p>
+              Empresas pequenas precisam de clareza, execução e um projeto que ajude o cliente a confiar mais rápido.
+            </p>
+          </div>
+
+          <div class="grid two collapse-list" data-collapse-list data-collapsed-count="2">
+            <article class="testimonial" data-collapsible-item><p>“Eu precisava de uma página simples, mas profissional. A entrega ficou clara, rápida e já comecei a mandar o link para clientes no WhatsApp.”</p><h3>Marcos Almeida</h3><p>Prestador de serviços</p></article>
+            <article class="testimonial" data-collapsible-item><p>“Antes eu explicava tudo manualmente. Com a landing page, o cliente já chega entendendo minha oferta e o atendimento ficou mais direto.”</p><h3>Fernanda Lopes</h3><p>Consultora</p></article>
+            <article class="testimonial" data-collapsible-item><p>“O cardápio digital organizou muito melhor os pedidos. A apresentação ficou mais profissional e reduziu bastante pergunta repetida.”</p><h3>Rafael Martins</h3><p>Dono de lanchonete</p></article>
+            <article class="testimonial" data-collapsible-item><p>“Meu site antigo não passava confiança. Depois da atualização, ficou mais rápido, bonito e fácil de apresentar para novos clientes.”</p><h3>Camila Rocha</h3><p>Clínica de estética</p></article>
+            <article class="testimonial" data-collapsible-item><p>“Eu tinha uma ideia de sistema interno, mas não sabia como transformar em algo real. A Código Lucrativo organizou o fluxo e colocou funcionando.”</p><h3>Eduardo Nunes</h3><p>Pequeno empresário</p></article>
+            <article class="testimonial" data-collapsible-item><p>“A página nova deixou minha oferta muito mais clara. Agora tenho um link único para mandar em campanhas, propostas e conversas.”</p><h3>Juliana Prado</h3><p>Profissional liberal</p></article>
+          </div>
+          <div class="collapse-control">
+            <button class="button secondary" type="button" data-collapse-button data-expanded-label="Ver menos depoimentos">Ver mais depoimentos</button>
+          </div>
+
+          <div class="rating">
+            <span>21 projetos entregues</span>
+            <span>Clientes de diferentes segmentos</span>
+            <span>Sites, landing pages e sistemas web</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="para-quem">
+        <div class="wrap">
+          <div class="wide-head">
+            <span class="eyebrow">A Código Lucrativo é para você se...</span>
+            <h2>Você precisa transformar presença digital em confiança, contato e venda</h2>
+          </div>
+          <ul class="profile-list collapse-list" data-collapse-list data-collapsed-count="5">
+            <li data-collapsible-item>Você tem uma pequena empresa e precisa parecer mais profissional online.</li>
+            <li data-collapsible-item>Você vende pelo WhatsApp e quer preparar melhor o cliente antes do contato.</li>
+            <li data-collapsible-item>Você presta serviços e precisa explicar sua oferta com clareza.</li>
+            <li data-collapsible-item>Você tem loja física e quer divulgar produtos, localização e atendimento.</li>
+            <li data-collapsible-item>Você quer rodar anúncios e precisa de uma landing page feita para conversão.</li>
+            <li data-collapsible-item>Você tem e-commerce ou quer começar a vender online.</li>
+            <li data-collapsible-item>Você é profissional liberal e precisa transmitir confiança antes da primeira conversa.</li>
+            <li data-collapsible-item>Você é infoprodutor e precisa de página para curso, mentoria, lista de espera ou lançamento.</li>
+            <li data-collapsible-item>Você tem restaurante, lanchonete ou delivery e quer organizar cardápio e pedidos.</li>
+            <li data-collapsible-item>Você usa planilhas e processos manuais que poderiam virar sistema.</li>
+            <li data-collapsible-item>Você tem um site antigo e quer corrigir, modernizar ou otimizar.</li>
+            <li data-collapsible-item>Você precisa de uma solução web específica que ainda não encontrou pronta.</li>
+          </ul>
+          <div class="collapse-control">
+            <button class="button secondary" type="button" data-collapse-button data-expanded-label="Ver menos perfis">Ver todos os perfis</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Dúvidas comuns</span>
+              <h2>Perguntas que quase todo cliente faz antes de começar</h2>
+            </div>
+            <p>Respostas diretas para você entender investimento, prazo, manutenção e próximos passos.</p>
+          </div>
+
+          <div class="faq">
+            <details open><summary>Quanto custa criar um site ou landing page?</summary><p>Depende do objetivo, número de páginas, funcionalidades e nível de complexidade. O orçamento é feito após entender o que você precisa, sem compromisso.</p></details>
+            <details><summary>Quanto tempo demora para ficar pronto?</summary><p>Projetos simples podem ser entregues em menos tempo. Projetos com sistema, integração ou painel exigem mais etapas. O prazo real é definido no diagnóstico.</p></details>
+            <details><summary>Vocês aceitam projetos pequenos?</summary><p>Sim. Uma página simples, quando bem feita, pode resolver um problema importante para o negócio.</p></details>
+            <details><summary>Vocês fazem sistemas mais complexos?</summary><p>Sim. Desenvolvemos sistemas web, painéis, dashboards, áreas de membros, permissões de usuários, automações e integrações.</p></details>
+            <details><summary>Depois da entrega, eu fico sozinho?</summary><p>Não precisa. Podemos combinar suporte, manutenção, melhorias e novas etapas conforme sua necessidade.</p></details>
+            <details><summary>Vocês usam plataforma pronta ou código próprio?</summary><p>Depende do projeto. Quando uma plataforma resolve bem, ela pode ser considerada. Quando o negócio precisa de liberdade, performance ou funções específicas, o código próprio faz mais sentido.</p></details>
+            <details><summary>Precisa de contrato?</summary><p>Para projetos maiores, sim. O contrato protege os dois lados e deixa escopo, prazo, pagamento e entrega mais claros.</p></details>
+            <details><summary>Como funciona o pagamento?</summary><p>O pagamento pode ser dividido conforme o projeto. As condições são apresentadas junto com o orçamento.</p></details>
+          </div>
+        </div>
+      </section>
+
+      <section id="contato" class="cta">
+        <div class="wrap">
+          <div class="cta-box">
+            <div>
+              <h2>Seu negócio não precisa continuar invisível online</h2>
+              <p>
+                Conte o que você precisa criar, corrigir ou melhorar. Nós analisamos o cenário e indicamos o melhor caminho para colocar sua solução no ar.
+              </p>
+              <p class="safe-note">Sem compromisso. Resposta inicial em até 24h.</p>
+            </div>
+            <a class="button primary" href="https://wa.me/5599984843091">Solicitar orçamento grátis pelo WhatsApp</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <img class="footer-logo" src="./assets/codigo-lucrativo-logo.png" alt="Código Lucrativo" />
+          <p>Desenvolvimento web para pequenas empresas venderem melhor.</p>
+          <p>© 2026 Código Lucrativo. Sites, landing pages e sistemas web com foco em clareza, performance e resultado comercial.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#inicio">Início</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#processo">Processo</a>
+          <a href="#portfolio">Portfólio</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://wa.me/5599984843091">Solicitar orçamento</a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.querySelectorAll("[data-collapse-list]").forEach((list, index) => {
+        const items = Array.from(list.querySelectorAll("[data-collapsible-item]"));
+        const button = list.nextElementSibling?.querySelector("[data-collapse-button]");
+        const visibleCount = Number(list.dataset.collapsedCount || 3);
+
+        if (!button || items.length <= visibleCount) {
+          button?.closest(".collapse-control")?.remove();
+          return;
+        }
+
+        const listId = list.id || `collapse-list-${index + 1}`;
+        const collapsedLabel = button.textContent.trim();
+        const expandedLabel = button.dataset.expandedLabel || "Ver menos";
+
+        list.id = listId;
+        button.setAttribute("aria-controls", listId);
+        button.setAttribute("aria-expanded", "false");
+
+        const setExpanded = (expanded) => {
+          items.forEach((item, itemIndex) => {
+            item.hidden = !expanded && itemIndex >= visibleCount;
+          });
+          button.textContent = expanded ? expandedLabel : collapsedLabel;
+          button.setAttribute("aria-expanded", String(expanded));
+        };
+
+        setExpanded(false);
+        button.addEventListener("click", () => {
+          setExpanded(button.getAttribute("aria-expanded") !== "true");
+        });
+      });
+    </script>
+  </body>
+</html>
